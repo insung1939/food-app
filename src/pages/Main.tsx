@@ -15,7 +15,7 @@ export default function Main() {
 
   const getFoodListData = async () => {
     const foodList = await axios.get(FOOD_LIST_URL)
-    setFoodListData(foodList.data.slice())
+    setFoodListData(foodList.data)
   }
 
   console.log(foodListData)

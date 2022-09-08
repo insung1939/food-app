@@ -13,7 +13,7 @@ export interface INutritionFacts {
 }
 
 export interface IFoodDetailList {
-  id: string
+  id: number
   name: string
   brand: string
   price: number

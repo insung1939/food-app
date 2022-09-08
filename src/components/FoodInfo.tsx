@@ -11,8 +11,7 @@ type IFoodInfoProps = {
 export default function FoodInfo({ foodData }: IFoodInfoProps) {
   const navigate = useNavigate()
   const goDetailPage = () => {
-    console.log('dskjhfkjasdhkfjh')
-    navigate('/detail')
+    navigate('/detail', { state: foodData.id })
   }
   return (
     <div style={{ marginBottom: '8px', display: 'flex' }} onClick={goDetailPage}>
