@@ -8,7 +8,7 @@ export default function Header() {
   }
   return (
     <HeaderLayout>
-      <img src="/images/backBtn.png" alt="backBtn" onClick={goBack} />
+      <img src="/images/backBtn.png" alt="backBtn" style={{ height: '24px', width: '24px' }} onClick={goBack} />
     </HeaderLayout>
   )
 }

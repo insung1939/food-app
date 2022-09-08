@@ -1,10 +1,80 @@
 import { IFoodList } from '../types/foodList'
+import styled from 'styled-components'
+import { getGradeBg } from '../utils/common'
+import { color } from '../types/color'
+import { useNavigate } from 'react-router-dom'
 
 type IFoodInfoProps = {
   foodData: IFoodList
-  onClick: () => void
 }
 
 export default function FoodInfo({ foodData }: IFoodInfoProps) {
-  return <div style={{ color: 'red' }}>{foodData.brand}</div>
+  const navigate = useNavigate()
+  const goDetailPage = () => {
+    console.log('dskjhfkjasdhkfjh')
+    navigate('/detail')
+  }
+  return (
+    <div style={{ marginBottom: '8px', display: 'flex' }} onClick={goDetailPage}>
+      <FoodBox>
+        <GradeStyle style={{ backgroundColor: getGradeBg(foodData.nutrition_grade) }}>
+          {foodData.nutrition_grade}
+        </GradeStyle>
+        <FoodImg
+          style={{
+            backgroundImage: foodData.image_url ? `url(${foodData.image_url})` : '',
+            backgroundColor: foodData.image_url ? '' : `${color.replacedImg}`,
+          }}
+        />
+      </FoodBox>
+      <div>
+        <FoodBrand>{foodData.brand}</FoodBrand>
+        <FoodName>{foodData.name}</FoodName>
+      </div>
+    </div>
+  )
 }
+
+//style
+const FoodBox = styled.div`
+  border-radius: 10px;
+  display: flex;
+  margin-right: 12px;
+  height: 96px;
+`
+
+const GradeStyle = styled.div`
+  color: ${color.white};
+  width: 33px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 18px;
+`
+
+const FoodImg = styled.div`
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 96px;
+  background-repeat: no-repeat;
+  background-size: cover;
+`
+
+const FoodBrand = styled.h6`
+  margin-bottom: 2px;
+  font-weight: 400;
+  color: ${color.lightGray};
+  font-size: 14px;
+`
+const FoodName = styled.p`
+  color: ${color.white};
+  font-weight: 400;
+  font-size: 16px;
+  word-break: keep-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+`
