@@ -19,7 +19,7 @@ export interface IFoodDetailList {
   price: number
   url: string
   image_url: string
-  nutrition_ratio: INutritionRatio[]
+  nutrients_ratio: INutritionRatio[]
   nutrition_grade: string
   nutrition_facts: INutritionFacts[]
 }

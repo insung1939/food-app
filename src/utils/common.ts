@@ -1,6 +1,6 @@
 import { color } from '../types/color'
 
-export const getGradeBg = (grade: string) => {
+export const getGradeBg = (grade: string | undefined) => {
   switch (grade) {
     case 'A+':
       return color.green

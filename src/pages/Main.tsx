@@ -1,32 +1,16 @@
-import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { color } from '../types/color'
-import axios from 'axios'
-import { IFoodList } from '../types/foodList'
 import FoodInfo from '../components/FoodInfo'
+import { useFetchFoodList } from '../hooks/useFetchFoodList'
 
 export default function Main() {
-  const FOOD_LIST_URL = 'https://nrisecodingtest.s3.ap-northeast-2.amazonaws.com/fe/food/food_main_list.json'
-  const [foodListData, setFoodListData] = useState<IFoodList[]>()
-
-  useEffect(() => {
-    getFoodListData()
-  }, [])
-
-  const getFoodListData = async () => {
-    const foodList = await axios.get(FOOD_LIST_URL)
-    setFoodListData(foodList.data)
-  }
-
-  console.log(foodListData)
+  const { foodListData } = useFetchFoodList()
 
   return (
     <>
       <MainTitle>푸드</MainTitle>
       <RankTitle>🥗 샐러드 영양소 비율 랭킹</RankTitle>
-      {foodListData?.map((food, index) => (
-        <FoodInfo foodData={food} key={index} />
-      ))}
+      {foodListData && foodListData.map((food, index) => <FoodInfo foodData={food} key={index} />)}
     </>
   )
 }
