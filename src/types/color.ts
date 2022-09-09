@@ -17,4 +17,5 @@ export const color: IColor = {
   borderColor: '#30333F',
   boxBgColor: '#1E2127',
   replacedImg: '#ededed',
+  borderGray: '#545A6C',
 }

@@ -4,11 +4,16 @@ import styled from 'styled-components'
 import { color } from '../types/color'
 import { getGradeBg } from '../utils/common'
 import { useFetchFoodDetail } from '../hooks/useFetchFoodDetail'
+import NutritionRange from '../components/NutritionRange'
+import NutritionInfo from '../components/NutritionInfo'
 
 export default function Detail() {
   const location = useLocation()
   const foodId = location.state as number
   const { foodDetailData } = useFetchFoodDetail(foodId)
+  const openUrl = (url: string) => {
+    window.open(url, '_blank')
+  }
 
   return (
     <>
@@ -25,7 +30,7 @@ export default function Detail() {
               <div style={{ padding: '40px 16px 16px' }}>
                 <DetailFoodName>{foodDetailData.name}</DetailFoodName>
                 <DetailFoodBrand>{foodDetailData.brand}</DetailFoodBrand>
-                <DetailFoodPrice>{foodDetailData.price}원</DetailFoodPrice>
+                <DetailFoodPrice>{foodDetailData.price.toLocaleString()}원</DetailFoodPrice>
               </div>
             </GradientBox>
           </DetailFoodImage>
@@ -69,7 +74,24 @@ export default function Detail() {
           </NutrientGrid>
           <TitleStyle>칼로리 정보</TitleStyle>
           <InfoStyle>하루 2000칼로리의 식단을 기준으로 합니다.</InfoStyle>
-          <InfoBox style={{ height: '78px', marginTop: '16px' }}></InfoBox>
+          <InfoBox style={{ marginTop: '16px', marginBottom: '40px' }}>
+            <CalorieInfo>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <CalorieRecommend>{foodDetailData.nutrition_facts[0].amount}</CalorieRecommend>
+                <CalorieTotal>/{foodDetailData.nutrition_facts[0].recommended_amount}</CalorieTotal>
+              </div>
+              <CaloriePercent>{foodDetailData.nutrition_facts[0].ratio}%</CaloriePercent>
+            </CalorieInfo>
+            <NutritionRange percent={foodDetailData.nutrition_facts[0].ratio} />
+          </InfoBox>
+          <TitleStyle>영양소 정보</TitleStyle>
+          <InfoStyle>백분율은 하루 2000칼로리의 식단을 기준으로 합니다.</InfoStyle>
+          <InfoBox style={{ margin: '20px 0 16px', padding: '6px 16px 4px' }}>
+            {foodDetailData.nutrition_facts.slice(1).map((info) => (
+              <NutritionInfo info={info} />
+            ))}
+          </InfoBox>
+          <BuyButton onClick={() => openUrl(foodDetailData.url)}>구매하기</BuyButton>
         </>
       )}
     </>
@@ -174,5 +196,40 @@ const BottomTextStyle = styled.p`
   color: ${color.white};
   font-size: 14px;
 `
+const CalorieInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 9px;
+`
 
-// style={{ color: getNutritionRatio('carbs')?.diff > 0 ? color.red : color.green }}
+const CalorieRecommend = styled.span`
+  font-size: 20px;
+  font-weight: 700;
+  color: ${color.white};
+  margin-right: 4px;
+`
+
+const CalorieTotal = styled.span`
+  font-size: 12px;
+  font-weight: 400;
+  color: ${color.lightGray};
+`
+
+const CaloriePercent = styled.span`
+  font-size: 18px;
+  font-weight: 700;
+  color: ${color.white};
+`
+
+const BuyButton = styled.button`
+  border-radius: 5px;
+  background-color ${color.boxBgColor};
+  width: 100%;
+  border: 1px solid ${color.borderGray};
+  height: 40px;
+  padding: 8px 0;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  color: ${color.gray};
+`
