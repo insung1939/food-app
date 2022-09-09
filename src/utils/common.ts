@@ -20,3 +20,18 @@ export const getGradeBg = (grade: string | undefined) => {
       break
   }
 }
+
+export const getNutritionName = (word: string) => {
+  switch (word) {
+    case 'carbs':
+      return '탄수화물'
+    case 'protein':
+      return '단백질'
+    case 'fat':
+      return '지방'
+    case 'natrium':
+      return '나트륨'
+    default:
+      break
+  }
+}

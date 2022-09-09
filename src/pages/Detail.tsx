@@ -6,6 +6,8 @@ import { getGradeBg } from '../utils/common'
 import { useFetchFoodDetail } from '../hooks/useFetchFoodDetail'
 import NutritionRange from '../components/NutritionRange'
 import NutritionInfo from '../components/NutritionInfo'
+import { InfoBox, StrongTextStyle, BottomTextStyle } from '../styles/common'
+import RatioInfo from '../components/RatioInfo'
 
 export default function Detail() {
   const location = useLocation()
@@ -34,7 +36,6 @@ export default function Detail() {
               </div>
             </GradientBox>
           </DetailFoodImage>
-
           <TitleStyle>영양소 비율</TitleStyle>
           <InfoStyle>
             전문가들이 권장하는 탄수화물 5 : 단백질 2 : 지방3 비율을 기준으로 A~C까지의 등급으로 표기하였습니다.
@@ -44,33 +45,9 @@ export default function Detail() {
               <StrongTextStyle style={{ fontSize: '40px' }}>{foodDetailData.nutrition_grade}</StrongTextStyle>
               <BottomTextStyle>영양소 비율 등급</BottomTextStyle>
             </GradeInfoBox>
-            <InfoBox>
-              <StrongTextStyle style={{ fontSize: '30px' }}>{foodDetailData.nutrients_ratio[0].ratio}%</StrongTextStyle>
-              <SmallTextStyle>적정 비율 {foodDetailData.nutrients_ratio[0].recommended}%</SmallTextStyle>
-              <PercentDiff style={{ color: foodDetailData.nutrients_ratio[0].diff > 0 ? color.red : color.green }}>
-                {foodDetailData.nutrients_ratio[0].diff > 0 ? '+' : ''}
-                {foodDetailData.nutrients_ratio[0].diff}%
-              </PercentDiff>
-              <BottomTextStyle>탄수화물</BottomTextStyle>
-            </InfoBox>
-            <InfoBox>
-              <StrongTextStyle style={{ fontSize: '30px' }}>{foodDetailData.nutrients_ratio[1].ratio}%</StrongTextStyle>
-              <SmallTextStyle>적정 비율 {foodDetailData.nutrients_ratio[1].recommended}%</SmallTextStyle>
-              <PercentDiff style={{ color: foodDetailData.nutrients_ratio[1].diff > 0 ? color.red : color.green }}>
-                {foodDetailData.nutrients_ratio[1].diff > 0 ? '+' : ''}
-                {foodDetailData.nutrients_ratio[1].diff}%
-              </PercentDiff>
-              <BottomTextStyle>단백질</BottomTextStyle>
-            </InfoBox>
-            <InfoBox>
-              <StrongTextStyle style={{ fontSize: '30px' }}>{foodDetailData.nutrients_ratio[2].ratio}%</StrongTextStyle>
-              <SmallTextStyle>적정 비율 {foodDetailData.nutrients_ratio[2].recommended}%</SmallTextStyle>
-              <PercentDiff style={{ color: foodDetailData.nutrients_ratio[2].diff > 0 ? color.red : color.green }}>
-                {foodDetailData.nutrients_ratio[2].diff > 0 ? '+' : ''}
-                {foodDetailData.nutrients_ratio[2].diff}%
-              </PercentDiff>
-              <BottomTextStyle>지방</BottomTextStyle>
-            </InfoBox>
+            {foodDetailData.nutrients_ratio.map((ratioInfo) => (
+              <RatioInfo ratioInfo={ratioInfo} key={ratioInfo.name} />
+            ))}
           </NutrientGrid>
           <TitleStyle>칼로리 정보</TitleStyle>
           <InfoStyle>하루 2000칼로리의 식단을 기준으로 합니다.</InfoStyle>
@@ -88,7 +65,7 @@ export default function Detail() {
           <InfoStyle>백분율은 하루 2000칼로리의 식단을 기준으로 합니다.</InfoStyle>
           <InfoBox style={{ margin: '20px 0 16px', padding: '6px 16px 4px' }}>
             {foodDetailData.nutrition_facts.slice(1).map((info) => (
-              <NutritionInfo info={info} />
+              <NutritionInfo info={info} key={info.name} />
             ))}
           </InfoBox>
           <BuyButton onClick={() => openUrl(foodDetailData.url)}>구매하기</BuyButton>
@@ -164,38 +141,7 @@ const GradeInfoBox = styled.div`
   border-radius: 6px;
   padding: 16px;
 `
-const InfoBox = styled.div`
-  border-radius: 6px;
-  padding: 16px;
-  background-color: ${color.boxBgColor};
-  position: relative;
-`
 
-const StrongTextStyle = styled.span`
-  color: ${color.white};
-  font-weight: 700;
-`
-
-const PercentDiff = styled.span`
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  font-weight: 700;
-  font-size: 18px;
-`
-
-const SmallTextStyle = styled.p`
-  font-weight: 400;
-  color: ${color.lightGray};
-  font-size: 12px;
-`
-
-const BottomTextStyle = styled.p`
-  margin-top: 30px;
-  font-weight: 400;
-  color: ${color.white};
-  font-size: 14px;
-`
 const CalorieInfo = styled.div`
   display: flex;
   justify-content: space-between;

@@ -2,26 +2,13 @@ import NutritionRange from './NutritionRange'
 import { INutritionFacts } from '../types/foodDetailList'
 import styled from 'styled-components'
 import { color } from '../types/color'
+import { getNutritionName } from '../utils/common'
 
 type IInfoProps = {
   info: INutritionFacts
 }
 
 export default function NutritionInfo({ info }: IInfoProps) {
-  const getNutritionName = (word: string) => {
-    switch (word) {
-      case 'carbs':
-        return '탄수화물'
-      case 'protein':
-        return '단백질'
-      case 'fat':
-        return '지방'
-      case 'natrium':
-        return '나트륨'
-      default:
-        break
-    }
-  }
   return (
     <div style={{ padding: '12px 0' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '9px' }}>
