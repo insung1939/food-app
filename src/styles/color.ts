@@ -2,6 +2,8 @@ interface IColor {
   [key: string]: string
 }
 
+//color name
+
 export const color: IColor = {
   black: '#0C0F0F',
   white: '#FFFFFF',

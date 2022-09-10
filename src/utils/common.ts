@@ -1,4 +1,7 @@
-import { color } from '../types/color'
+//color
+import { color } from '../styles/color'
+
+//common functions
 
 export const getGradeBg = (grade: string | undefined) => {
   switch (grade) {

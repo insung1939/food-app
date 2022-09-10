@@ -1,10 +1,16 @@
-import styled from 'styled-components'
-import { color } from '../types/color'
-import FoodInfo from '../components/FoodInfo'
-import { useInView } from 'react-intersection-observer'
-import axios from 'axios'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
+//style
+import styled from 'styled-components'
+import { color } from '../styles/color'
+//components
+import FoodInfo from '../components/FoodInfo'
+//library for infinite scroll
+import { useInView } from 'react-intersection-observer'
+//type
 import { IFoodList } from '../types/foodList'
+
+// ----------------------------------------------------------
 
 export default function Main() {
   const FOOD_LIST_URL = 'https://nrisecodingtest.s3.ap-northeast-2.amazonaws.com/fe/food/food_main_list.json'

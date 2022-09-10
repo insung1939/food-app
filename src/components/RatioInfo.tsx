@@ -1,11 +1,17 @@
-import { INutritionRatio } from '../types/foodDetailList'
-import { color } from '../types/color'
-import { getNutritionName } from '../utils/common'
+//style
+import { color } from '../styles/color'
 import { InfoBox, StrongTextStyle, SmallTextStyle, PercentDiff, BottomTextStyle } from '../styles/common'
+//type
+import { INutritionRatio } from '../types/foodDetailList'
+//common
+import { getNutritionName } from '../utils/common'
 
+//props type
 type IRatioInfoProps = {
   ratioInfo: INutritionRatio
 }
+
+// ----------------------------------------------------------
 
 export default function RatioInfo({ ratioInfo }: IRatioInfoProps) {
   return (

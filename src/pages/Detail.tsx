@@ -1,18 +1,28 @@
+//router
 import { useLocation } from 'react-router-dom'
-import Header from '../components/Header'
+//style
 import styled from 'styled-components'
-import { color } from '../types/color'
-import { getGradeBg } from '../utils/common'
+import { color } from '../styles/color'
+import { InfoBox, StrongTextStyle, BottomTextStyle } from '../styles/common'
+//hook
 import { useFetchFoodDetail } from '../hooks/useFetchFoodDetail'
+//common
+import { getGradeBg } from '../utils/common'
+//components
+import Header from '../components/Header'
 import NutritionRange from '../components/NutritionRange'
 import NutritionInfo from '../components/NutritionInfo'
-import { InfoBox, StrongTextStyle, BottomTextStyle } from '../styles/common'
 import RatioInfo from '../components/RatioInfo'
+
+// ----------------------------------------------------------
 
 export default function Detail() {
   const location = useLocation()
   const foodId = location.state as number
+  //음식상세 데이터 가져오는 훅
   const { foodDetailData } = useFetchFoodDetail(foodId)
+
+  //구매사이트url 이동 함수
   const openUrl = (url: string) => {
     window.open(url, '_blank')
   }
@@ -75,6 +85,7 @@ export default function Detail() {
   )
 }
 
+//style
 const DetailFoodImage = styled.div`
   height: 343px;
   margin: 60px 0 40px;

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
-import { color } from '../types/color'
+import { color } from './color'
+
+//common styles
 
 export const PercentDiff = styled.span`
   position: absolute;

@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom'
+//style
 import styled from 'styled-components'
-import { color } from '../types/color'
+import { color } from '../styles/color'
+
+// ----------------------------------------------------------
 
 export default function Header() {
   const navigate = useNavigate()
@@ -14,6 +17,7 @@ export default function Header() {
   )
 }
 
+//style
 const HeaderStyle = styled.div`
   height: 44px;
   position: fixed;

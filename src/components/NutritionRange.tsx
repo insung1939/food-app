@@ -1,9 +1,13 @@
+//style
 import styled from 'styled-components'
-import { color } from '../types/color'
+import { color } from '../styles/color'
 
+//props type
 type INutritionProps = {
   percent: number
 }
+
+// ----------------------------------------------------------
 
 export default function NutritionRange({ percent }: INutritionProps) {
   return (
@@ -13,6 +17,7 @@ export default function NutritionRange({ percent }: INutritionProps) {
   )
 }
 
+//style
 const TotalRange = styled.div`
   height: 8px;
   background-color: ${color.borderColor};

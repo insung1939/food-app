@@ -1,12 +1,19 @@
-import NutritionRange from './NutritionRange'
-import { INutritionFacts } from '../types/foodDetailList'
+//style
 import styled from 'styled-components'
-import { color } from '../types/color'
+import { color } from '../styles/color'
+//common
 import { getNutritionName } from '../utils/common'
+//type
+import { INutritionFacts } from '../types/foodDetailList'
+//components
+import NutritionRange from './NutritionRange'
 
+//props type
 type IInfoProps = {
   info: INutritionFacts
 }
+
+// ----------------------------------------------------------
 
 export default function NutritionInfo({ info }: IInfoProps) {
   return (
@@ -24,6 +31,7 @@ export default function NutritionInfo({ info }: IInfoProps) {
   )
 }
 
+//style
 const InfoName = styled.span`
   color: ${color.white};
   font-weight: 400;

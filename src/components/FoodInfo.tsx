@@ -1,12 +1,18 @@
-import { IFoodList } from '../types/foodList'
-import styled from 'styled-components'
-import { getGradeBg } from '../utils/common'
-import { color } from '../types/color'
 import { useNavigate } from 'react-router-dom'
+//style
+import styled from 'styled-components'
+import { color } from '../styles/color'
+//type
+import { IFoodList } from '../types/foodList'
+//common
+import { getGradeBg } from '../utils/common'
 
+//props type
 type IFoodInfoProps = {
   foodData: IFoodList
 }
+
+// ----------------------------------------------------------
 
 export default function FoodInfo({ foodData }: IFoodInfoProps) {
   const navigate = useNavigate()
