@@ -1,4 +1,5 @@
 //router
+import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 //style
 import styled from 'styled-components'
@@ -17,6 +18,7 @@ import RatioInfo from '../components/RatioInfo'
 // ----------------------------------------------------------
 
 export default function Detail() {
+  const navigate = useNavigate()
   const location = useLocation()
   const foodId = location.state as number
   //음식상세 데이터 가져오는 훅
@@ -27,9 +29,14 @@ export default function Detail() {
     window.open(url, '_blank')
   }
 
+  //이전 페이지 이동
+  const goBack = () => {
+    navigate('/')
+  }
+
   return (
     <>
-      <Header />
+      <Header handleClick={goBack} />
       {foodDetailData && (
         <>
           <DetailFoodImage

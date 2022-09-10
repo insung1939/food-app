@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+//router
+import { useNavigate } from 'react-router-dom'
 //style
 import styled from 'styled-components'
 import { color } from '../styles/color'
@@ -17,6 +19,10 @@ export default function Main() {
   const [foodListData, setFoodListData] = useState<IFoodList[]>([])
   const [count, setCount] = useState<number>(0)
   const [ref, inView] = useInView()
+  const navigate = useNavigate()
+  const goDetailPage = (id: number) => {
+    navigate('/detail', { state: id })
+  }
 
   const fetchFoodList = async () => {
     try {
@@ -43,7 +49,10 @@ export default function Main() {
     <>
       <MainTitle>푸드</MainTitle>
       <RankTitle>🥗 샐러드 영양소 비율 랭킹</RankTitle>
-      {foodListData && foodListData.map((food, index) => <FoodInfo foodData={food} key={index} />)}
+      {foodListData &&
+        foodListData.map((food, index) => (
+          <FoodInfo foodData={food} handleClick={() => goDetailPage(food.id)} key={index} />
+        ))}
       <div ref={ref} />
     </>
   )

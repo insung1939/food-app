@@ -1,18 +1,18 @@
-import { useNavigate } from 'react-router-dom'
 //style
 import styled from 'styled-components'
 import { color } from '../styles/color'
 
+//type
+type IClickProps = {
+  handleClick: () => void
+}
+
 // ----------------------------------------------------------
 
-export default function Header() {
-  const navigate = useNavigate()
-  const goBack = () => {
-    navigate('/')
-  }
+export default function Header({ handleClick }: IClickProps) {
   return (
-    <HeaderStyle>
-      <BackArrow src="/images/backBtn.png" alt="backBtn" onClick={goBack} />
+    <HeaderStyle onClick={handleClick}>
+      <BackArrow src="/images/backBtn.png" alt="backBtn" />
     </HeaderStyle>
   )
 }

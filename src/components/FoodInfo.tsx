@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 //style
 import styled from 'styled-components'
 import { color } from '../styles/color'
@@ -10,17 +9,14 @@ import { getGradeBg } from '../utils/common'
 //props type
 type IFoodInfoProps = {
   foodData: IFoodList
+  handleClick: () => void
 }
 
 // ----------------------------------------------------------
 
-export default function FoodInfo({ foodData }: IFoodInfoProps) {
-  const navigate = useNavigate()
-  const goDetailPage = () => {
-    navigate('/detail', { state: foodData.id })
-  }
+export default function FoodInfo({ foodData, handleClick }: IFoodInfoProps) {
   return (
-    <FoodInfoStyle onClick={goDetailPage}>
+    <FoodInfoStyle onClick={handleClick}>
       <FoodBox>
         <GradeStyle style={{ backgroundColor: getGradeBg(foodData.nutrition_grade) }}>
           {foodData.nutrition_grade}
