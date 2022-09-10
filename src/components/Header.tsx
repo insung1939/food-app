@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { color } from '../types/color'
 
 export default function Header() {
   const navigate = useNavigate()
@@ -7,11 +8,20 @@ export default function Header() {
     navigate('/')
   }
   return (
-    <div style={{ height: '44px' }}>
+    <HeaderStyle>
       <BackArrow src="/images/backBtn.png" alt="backBtn" onClick={goBack} />
-    </div>
+    </HeaderStyle>
   )
 }
+
+const HeaderStyle = styled.div`
+  height: 44px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: ${color.black};
+  z-index: 100;
+`
 
 const BackArrow = styled.img`
   height: 24px;

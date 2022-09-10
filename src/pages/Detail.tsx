@@ -77,12 +77,13 @@ export default function Detail() {
 
 const DetailFoodImage = styled.div`
   height: 343px;
-  margin: 16px 0 40px;
+  margin: 60px 0 40px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   position: relative;
   border-radius: 10px;
+  z-index: 50;
 `
 const GradientBox = styled.div`
   background: linear-gradient(180deg, rgba(12, 15, 15, 0) 0%, rgba(12, 15, 15, 0.9) 100%);
