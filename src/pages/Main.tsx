@@ -38,10 +38,11 @@ export default function Main() {
 
 //style
 const MainTitle = styled.h1`
-  padding: 44px 0 17px;
+  padding: 44px 0 25px;
   color: ${color.white};
   font-weight: 700;
   font-size: 24px;
+  line-height: 35px;
 `
 
 const RankTitle = styled.h2`
@@ -49,4 +50,5 @@ const RankTitle = styled.h2`
   color: ${color.white};
   font-weight: 700;
   font-size: 18px;
+  line-height: 26px;
 `

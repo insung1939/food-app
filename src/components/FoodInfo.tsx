@@ -75,6 +75,7 @@ const FoodBrand = styled.h6`
   font-weight: 400;
   color: ${color.lightGray};
   font-size: 14px;
+  line-height: 20px;
 `
 const FoodName = styled.p`
   color: ${color.white};
@@ -84,4 +85,5 @@ const FoodName = styled.p`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  line-height: 23px;
 `

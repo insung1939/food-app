@@ -9,12 +9,14 @@ export const PercentDiff = styled.span`
   top: 16px;
   font-weight: 700;
   font-size: 18px;
+  line-height: 26px;
 `
 
 export const SmallTextStyle = styled.p`
   font-weight: 400;
   color: ${color.lightGray};
   font-size: 12px;
+  line-height: 17px;
 `
 
 export const InfoBox = styled.div`
@@ -34,4 +36,5 @@ export const BottomTextStyle = styled.p`
   font-weight: 400;
   color: ${color.white};
   font-size: 14px;
+  line-height: 20px;
 `

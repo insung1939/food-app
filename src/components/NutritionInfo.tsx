@@ -36,12 +36,13 @@ const InfoName = styled.span`
   color: ${color.white};
   font-weight: 400;
   font-size: 14px;
+  line-height: 20px;
 `
 
 const InfoPercent = styled.span`
   color: ${color.white};
   font-weight: 700;
-  font-size: 16px;
+  line-height: 23px;
 `
 
 const InfoAmount = styled.span`

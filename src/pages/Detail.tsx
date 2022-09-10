@@ -59,7 +59,9 @@ export default function Detail() {
           </InfoStyle>
           <NutrientGrid>
             <GradeInfoBox style={{ backgroundColor: getGradeBg(foodDetailData.nutrition_grade) }}>
-              <StrongTextStyle style={{ fontSize: '40px' }}>{foodDetailData.nutrition_grade}</StrongTextStyle>
+              <StrongTextStyle style={{ fontSize: '40px', lineHeight: '58px' }}>
+                {foodDetailData.nutrition_grade}
+              </StrongTextStyle>
               <BottomTextStyle>영양소 비율 등급</BottomTextStyle>
             </GradeInfoBox>
             {foodDetailData.nutrients_ratio.map((ratioInfo) => (
@@ -119,6 +121,7 @@ const DetailFoodName = styled.h1`
   margin-bottom: 4px;
   font-size: 24px;
   word-break: keep-all;
+  line-height: 35px;
 `
 
 const DetailFoodBrand = styled.span`
@@ -126,11 +129,13 @@ const DetailFoodBrand = styled.span`
   font-weight: 400;
   margin-right: 12px;
   font-size: 14px;
+  line-height: 20px;
 `
 const DetailFoodPrice = styled.span`
   color: ${color.white};
   font-weight: 700;
   font-size: 14px;
+  line-height: 20px;
 `
 
 const TitleStyle = styled.h2`
@@ -146,6 +151,7 @@ const InfoStyle = styled.p`
   margin-top: 8px;
   font-weight: 400;
   font-size: 14px;
+  line-height: 20px;
 `
 
 const NutrientGrid = styled.div`
@@ -172,18 +178,21 @@ const CalorieRecommend = styled.span`
   font-weight: 700;
   color: ${color.white};
   margin-right: 4px;
+  line-height: 29px;
 `
 
 const CalorieTotal = styled.span`
   font-size: 12px;
   font-weight: 400;
   color: ${color.lightGray};
+  line-height: 17px;
 `
 
 const CaloriePercent = styled.span`
   font-size: 18px;
   font-weight: 700;
   color: ${color.white};
+  line-height: 26px;
 `
 
 const BuyButton = styled.button`
@@ -197,4 +206,5 @@ const BuyButton = styled.button`
   font-size: 16px;
   text-align: center;
   color: ${color.gray};
+  line-height: 23px;
 `
