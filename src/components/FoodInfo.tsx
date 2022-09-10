@@ -14,7 +14,7 @@ export default function FoodInfo({ foodData }: IFoodInfoProps) {
     navigate('/detail', { state: foodData.id })
   }
   return (
-    <div style={{ marginBottom: '8px', display: 'flex' }} onClick={goDetailPage}>
+    <FoodInfoStyle onClick={goDetailPage}>
       <FoodBox>
         <GradeStyle style={{ backgroundColor: getGradeBg(foodData.nutrition_grade) }}>
           {foodData.nutrition_grade}
@@ -30,11 +30,17 @@ export default function FoodInfo({ foodData }: IFoodInfoProps) {
         <FoodBrand>{foodData.brand}</FoodBrand>
         <FoodName>{foodData.name}</FoodName>
       </div>
-    </div>
+    </FoodInfoStyle>
   )
 }
 
 //style
+const FoodInfoStyle = styled.div`
+  margin: 0 auto 8px;
+  display: flex;
+  max-width: 400px;
+`
+
 const FoodBox = styled.div`
   border-radius: 10px;
   display: flex;
